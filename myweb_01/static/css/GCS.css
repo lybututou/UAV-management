@@ -1,0 +1,125 @@
+/* 此文件只写css样式 */
+/* 消除浏览器自带的内外边距 */
+* {
+    padding: 0;
+    margin: 0;
+}
+
+/* 版心 */
+.w {
+    width: 75%;
+    margin: auto;
+}
+
+/* 列表样式,统一定义页面中所有列表样式 */
+li {
+    list-style: none;
+}
+
+/* 头部盒子 */
+.header {
+    height: 80px;
+    background-color: bisque;
+    margin-bottom: 60px;
+    /* margin: 30px auto; */
+}
+
+/* 中广核图标部分 */
+.logo {
+    float: left;
+    width: 240px;
+    height: 80px;
+    background-color: pink;
+}
+
+/* 导航栏部分 */
+.navi {
+    /* 加浮动,整个大盒子中所有部分都必须加浮动,一个加都加 */
+    float: left;
+    width: 30%;
+    margin-left: 60px;
+    background-color: antiquewhite;
+}
+
+/* li竖着显示,让li浮动 */
+.navi ul li {
+    float: left;
+    margin: 0 20px;
+
+}
+
+.navi ul li a {
+    display: block;
+    height: 80px;
+    padding: 0 10px;
+    line-height: 80px;
+    font-size: 20px;
+    color: #050505;
+    text-decoration: none;
+}
+
+/* 鼠标经过a时有的变化 */
+.navi ul li a:hover {
+    border-bottom: 2px solid orange;
+    color: orange;
+}
+
+/* body模块 */
+.box1 {
+    height: 430px;
+    border-style: none;
+    border-color: #aaa;
+    background-color: transparent;
+    margin: 10px auto;
+}
+
+/* 母巢信息标题 */
+.firhead {
+    height: 70px;
+    margin: 20px auto;
+    box-shadow: 0 4px 3px 3px rgba(0, 0, 0, 0.1);
+    line-height: 70px;
+    text-align: center;
+}
+
+/* 母巢信息主体 */
+.firbody .bd1 {
+    float: left;
+    margin-left: 1%;
+    margin-right: 1%;
+    width: calc(23% - 6px);
+    height: 120px;
+    border-style: solid;
+    border-color: #888;
+    /* background-color: pink; */
+}
+
+/* 母巢当前状态 */
+.box1 .bd2 {
+    float: left;
+    height: 150px;
+    width: 40%;
+    /* margin-left: 25%; */
+    /* margin-right: 25%; */
+    margin: 10px 30%;
+    border-style: solid;
+    border-color: #888;
+}
+
+/* 巡检图片查看 */
+.view {
+    height: 300px;
+    border-style: none;
+    border-color: #aaa;
+    background-color: transparent;
+    margin: 10px auto;
+}
+
+/* 巡检图片查询头部 */
+.view .secbody {
+    height: 70px;
+    margin: 20px auto;
+    box-shadow: 0 4px 3px 3px rgba(0, 0, 0, 0.1);
+    line-height: 70px;
+    text-align: center;
+}

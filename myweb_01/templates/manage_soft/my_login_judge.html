@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>登陆失败</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        /* 版心 */
+        .w {
+            width: 75%;
+            margin: auto;
+        }
+
+        .head {
+            height: 80px;
+            /* background-color: bisque; */
+            margin-bottom: 60px;
+            border-bottom: 2px solid rgb(51, 89, 169);
+        }
+
+        .body {
+            height: 500px;
+            margin: 10px auto;
+            text-align: center;
+            line-height: 150px;
+            font-family: Arial, sans-serif;
+            /* border: 1px solid #999; */
+        }
+
+        .body .rebut {
+            width: 240px;
+            height: 40px;
+            font-size: 25px;
+            border: 1px solid #999;
+        }
+
+        .body h1 {
+            font-size: 35px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="w">
+        <div class="head">
+            <img src="../../static/image/CGN.png" alt="中广核图标" width="400px">
+        </div>
+        <div class="body">
+            <h1>登录失败</h1>
+            <a href="{% url 'login' %}" target="_self"><button class="rebut" type="submit">返回登录界面</button></a>
+        </div>
+    </div>
+</body>
+
+</html>

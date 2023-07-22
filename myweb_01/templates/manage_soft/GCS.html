@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>母巢信息</title>
+    <!-- <link rel="stylesheet" href="../css/GCS.css"> -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+        }
+
+        .daohang {
+            display: inline-block;
+            width: 130px;
+            height: 100%;
+            border-right: 1px solid #f1fafa;
+            vertical-align: top;
+        }
+
+        .information {
+            display: inline-block;
+            width: calc(100% - 138px);
+            height: 100%;
+            /* background-color: #f1fafa; */
+            background-image: url("../../static/image/BGpicture.png");
+            background-size: cover;
+            background-position-x: center;
+            vertical-align: top;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        ul li a {
+            /* a无法设置宽高 */
+            /* 1.转换成行内块 */
+            display: inline-block;
+
+            /* 2.转换成块级元素 */
+            width: 120px;
+            height: 50px;
+            margin: 15px 5px;
+            background-color: #e8e8ff;
+            line-height: 50px;
+            text-align: center;
+            text-decoration: none;
+            color: black;
+            font-size: 16px;
+        }
+
+        ul li a:hover {
+            background-color: #edeef0;
+            color: #ff8400;
+        }
+
+        .tubiao {
+            position: relative;
+            /*            z-index: 3;*/
+            margin-left: 10px;
+            margin-top: 10px;
+        }
+
+        .station {
+            position: absolute;
+            top: 46%;
+            left: calc(51% + 130px);
+            margin: -210px 0 0 -565px;
+            width: 1000px;
+            height: 420px;
+            /* border: 2px solid #878686;
+            border-radius: 10px; */
+            /*            background-color: #fff;*/
+        }
+
+        .top {
+            width: 1000px;
+            height: 280px;
+            /*            background-color: aqua;*/
+            border-bottom: 2px solid #878686;
+            display: flex;
+            flex-flow: row wrap;
+            justify-content: space-evenly;
+            align-content: space-evenly;
+        }
+
+        .info {
+            width: 210px;
+            height: 100px;
+            /*            text-align: center;*/
+            /*            margin:20px;*/
+            border: 1px solid #878686;
+            border-radius: 10px;
+            /*
+            display: flex;
+            flex-direction:column nowrap;
+            flex-flow:column wrap;
+            justify-content: flex-start;*/
+
+        }
+
+        .info1 {
+            width: 400px;
+            height: 100px;
+            /*            text-align: center;*/
+            /*            margin:20px;*/
+            border: 1px solid #878686;
+            border-radius: 10px;
+        }
+
+        .title {
+            height: 25px;
+            width: 50px;
+            margin-top: 8px;
+            margin-left: 10px;
+            margin-bottom: 0px;
+            font-weight: 600;
+        }
+
+        .show {
+            height: 25px;
+            width: 192px;
+            margin-top: 8px;
+            margin-left: 10px;
+        }
+
+        .bottom {
+            /*            background-color: aquamarine;*/
+            width: 500px;
+            height: 320px;
+            position: relative;
+            /*            top:-100px;*/
+        }
+
+        .b_l {
+            display: inline-block;
+            height: 120px;
+            width: 1000px;
+            ;
+            /* border-right:2px solid #878686; */
+            /*            background-color: antiquewhite;*/
+        }
+
+        .but {
+            width: 150px;
+            min-height: 30px;
+            margin: 30px 427px;
+            background-color: #1c7fe0;
+            border: 1px solid #1c7fe0;
+            color: #fff;
+            padding: 9px 14px;
+            font-size: 15px;
+            line-height: normal;
+            border-radius: 20px;
+        }
+
+        /* .b_r{
+            display:inline-block;
+            height:100px;
+            width: 115px;
+            background-color: aquamarine;
+        } */
+        .title1 {
+            text-align: center;
+            font-size: 18px;
+            height: 25px;
+            width: 400px;
+            margin-top: 8px;
+            /* margin-left: 10px; */
+            /* margin-bottom: 10px; */
+            font-weight: 600;
+        }
+
+        #muchao_state {
+            text-align: center;
+            height: 25px;
+            width: 400px;
+            margin-top: 15px;
+            font-weight: 600;
+            font-size: 20px;
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="daohang">
+        <ul>
+            <li><a href="{% url 'muchao' station_id rightnum %}">母巢信息</a></li>
+            <li><a href="{% url 'station' station_id rightnum %}">无人机飞行信息</a></li>
+        </ul>
+    </div>
+    <div class="information">
+        <div class ="tubiao"> <img src = "../../static/image/CGN.png" alt = "中广核图标" width = "300"/></div>
+
+    <div class="station">
+<!--
+        <div class="biao">
+            <h1>站台功能</h1>
+        </div>
+-->     
+        <h2 style="position:relative;margin-top: 5px;text-align: center; margin-bottom: -5px;">母巢信息</h2>
+        <div class="top">
+            <div class="info">
+                <p class="title">温度</p>
+                <div class="show">{{ last_data.wendu }}</div>
+                <div class="show">{{ last_data.time }}</div>
+            </div>
+            <div class="info">
+                <p class="title">湿度</p>
+                <div class="show">{{ last_data.shidu }}</div>
+                <div class="show">{{ last_data.time }}</div>
+            </div>
+            <div class="info">
+                <p class="title">风速</p>
+                <div class="show">{{ last_data.fengsu }}</div>
+                <div class="show">{{ last_data.time }}</div>
+            </div>
+            <div class="info">
+                <p class="title">雨量</p>
+                <div class="show">{{ last_data.yuliang }}</div>
+                <div class="show">{{ last_data.time }}</div>
+            </div>
+
+            <div class="info1">
+                <p class="title1">母巢当前状态</p>
+                <p id="muchao_state"></p>
+            </div>
+
+      </div>
+
+        <div class="bottom">
+            <div class="b_l">
+                <h2 style="position:relative;margin-top: 5px;text-align: center; margin-bottom: 5px;">巡检图片查看</h2>
+                <form action="{% url 'picture' last_data.station_id %}" method="post">
+                    {% csrf_token %}
+                    <span style="margin-left: 120px; font-size: 18px;position:relative;top:12px;">请输入希望查看场号：</span><input type="text" style="width: 30px;position:relative;top:10px;" placeholder="场号" name="Pic_Chang">
+                    <span style="margin-left: 45px; font-size: 18px;position:relative;top:12px;">请输入希望查看位号：</span><input type="text" style="width: 30px;position:relative;top:10px;" placeholder ="位号" name="Pic_Wei">
+                    <span style="margin-left: 45px; font-size: 18px;position:relative;top:12px;">请输入希望查看日期：</span><input type="text" style="width: 60px;position:relative;top:10px;" placeholder ="日期" name="Pic_date"><br>
+                    <button class="but" type="submit">查看图片</button>
+                </form>
+            </div>
+            
+            <div class="b_r">
+<!--                <button onclick="window.location.href = '{% url 'picture' last_data.station_id%}'">百度</button>-->
+            </div>
+        
+        
+        </div>
+    </div>
+
+            
+        
+        
+
+    </div>
+    <script language="JavaScript">
+	    setTimeout(function(){location.reload()},50000); 
+
+        let muchao_stateis = document.getElementById('muchao_state')
+        let muchao_statenum = { last_data,state }
+        if (muchao_statenum == 0){
+            muchao_stateis.innerText = '母巢当前未进行巡检任务'
+        }
+        else if(muchao_statenum == 1){
+            muchao_stateis.innerText = '母巢当前正在任务当中，目前舱门关闭'
+        }
+        else if(muchao_statenum == 2){
+            muchao_stateis.innerText = '母巢当前正在任务当中，目前舱门打开中'
+        }
+        //定时界面刷新
+    </script>
+
+</body>  
+</body>
+
+</html>

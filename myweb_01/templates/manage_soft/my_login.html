@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>登录</title>
+    <!-- <link rel="stylesheet" href="../../static/css/login.css"> -->
+    <style>
+        html {
+            font-style: sans-serif;  
+
+        }
+        /* 此文件只写css样式 */
+        body {
+            /* 背景图片和相关参数 */
+            /* background-image: url("../../static/image/BGpicture.png"); */
+            background-position: center;
+            /* background-position-y: -125px; */
+            background-size: cover;
+            background-attachment: fixed;
+            background-image: url("../../static/image/GCSBG.jpg");
+            font-family: "Microsoft YaHei",tahoma,verdana,sans-serif;
+
+        }
+        /* 消除浏览器自带的内外边距 */
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        /* 版心 */
+        .w {
+            width: 90%;
+            margin: auto;
+        }
+
+        /* 头部盒子 */
+        .w header {
+            height: 80px;
+            /* background-color: bisque; */
+            margin-bottom: 60px;
+            border-bottom: 2px solid rgb(53, 152, 219);
+            /* margin: 30px auto; */
+            /* border: 1px solid #999; */
+        }
+
+        /* 中广核图标部分 */
+        .logo {
+            margin-top: 10px;
+            float: left;
+            width: 500px;
+            /* background-image: url("../../static/image/s.png"); */
+            line-height: 80px;
+            /* height: 80px; */
+            /* line-height: 80px; */
+            /* text-align: center; */
+            /* background-color: pink; */
+
+        }
+
+        .w .registerarea {
+            height: 500px;
+            margin: 10px auto;
+            /* border: 1px solid #ccc; */
+
+        }
+
+        .w .registerarea .title {
+            float: left;
+            /* border: 1px solid #999; */
+            width: 59%;
+            height: auto;
+            text-align: center;
+            font-size: 4.5vh;
+            color: #fff;
+            margin-top: 11%;
+            /* align-items: center; */
+        }
+
+        .w .registerarea .regform h3 {
+            height: 66px;
+            border-bottom: 1px solid rgb(53, 152, 219);
+            /* border: 1px solid #aaa; */
+            /* background-color: #eee; */
+            line-height: 66px;
+            font-size: 30px;
+            /* color: rgb(63, 167, 236); */
+            color: #fff;
+            text-align: center;
+            margin-left: 10px;
+            margin-right: 10px;
+            margin-bottom: 3vh;
+
+        }
+
+        .w .registerarea .regform {
+            /* position: absolute; */
+            /* 向右对齐 */
+            float: right;
+            /* 相对高度，根据页面大小变化 */
+            height: 60vh;
+            /* 相对宽度 */
+            width: 27vw;
+            line-height: 9vh;
+            /* font-size: 25px; */
+            text-align: center;
+            /* border: 1px solid #ccc; */
+            margin-right: 3%;
+            /* rgb透明度 */
+            background-color: rgba(0, 0, 0, 0.2);
+            border-radius: 15px;
+            /* margin: 10px auto 0; */
+            /* white-space: pre; */
+        }
+
+        .regform label {
+            font-size: 25px;
+            display: inline-block;
+            width: 120px;
+            text-align: center;
+            margin-left: 2px;
+            margin-right: 2px;
+        }
+
+        .regform form input {
+            width: 18vw;
+            height: 5vh;
+            background-color: #fff;
+            /* background-color: rgba(255, 255, 255, 0); */
+            /* background-color: rgb(108, 185, 236); */
+            /* border-bottom: 2px solid rgb(53, 152, 219); */
+            border-radius: 6px;
+        }
+
+        .regform .login {
+            width: 18vw;
+            height: 7vh;
+            border: 1px solid #999;
+            /* 边框圆角 */
+            border-radius: 6px;
+            margin-top: 8vh;
+            margin-bottom: 4vh;
+            background-color: rgb(18, 134, 211);
+            color: #fff;
+            font-size: 3vh;
+            /* color: #fff; */
+            /* background-color: rgb(4, 95, 165); */
+            /* background-color: #fff; */
+
+        }
+
+        .regform a {
+            width: 18vw;
+            height: 7vh;
+            /* border: 1px solid #999; */
+            /* 边框圆角 */
+            border-radius: 5px;
+            /* background-color: rgb(18, 134, 211); */
+            color: #fff;
+            /* margin-top: 10vh; */
+            /* background-color: #fff; */
+            /* color: #fff; */
+            /* background-color: transparent; */
+
+        }
+
+    </style>
+</head>
+
+<body>
+    <!-- <img class="bg" src="../../static/image/BGpicture.png"> -->
+    <div class="w">
+        <header>
+            <div class="logo">
+                <img src="../../static/image/s.png" alt="中广核图标" width="500px">
+            </div>
+        </header>
+        <div class="registerarea">
+            <!-- <h3>用户登录</h3> -->
+            <div class="title">
+                <h1>无人机管理系统</h1>
+            </div>
+            <div class="regform">
+                <h3>用户登录</h3>
+                <form action="{% url 'login_judge' %}" method="post">
+                    {% csrf_token %}
+                    <!-- <label for="">用户名：</label> -->
+                    <input type="text" required="required" placeholder="  请输入用户名" name="username">
+                    <br>
+                    <!-- <label for="">密码：</label> -->
+                    <input type="text" required="required" placeholder="  请输入密码" name="password">
+                    <br>
+                    <a target="_self"><button class="login" type="submit">登&nbsp;&nbsp;&nbsp;&nbsp; 录</button></a>
+                </form>
+                <a href="{% url 'register' %}" target="_self">新用户点击注册</a>
+                <!-- <a href="{% url 'register' %}" target="_self"><input type="submit" value="注册"></a> -->
+
+            </div>
+        </div>
+        <footer></footer>
+    </div>
+</body>
+
+</html>

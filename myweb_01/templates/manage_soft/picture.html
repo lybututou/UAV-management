@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>图片查看</title>
+    <style type="text/css">
+        #lv {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin: -400px 0 0 -500px;
+            /*            margin: 0 auto;*/
+            width: 1000px;
+            height: 810px;
+            background: rgb(150, 235, 180);
+            text-align: center;
+        }
+
+        #img {
+            width: 900px;
+            height: 600px;
+            margin-top: 60px;
+        }
+
+        #pre {
+            position: absolute;
+            right: 55%;
+        }
+
+        #next {
+            position: absolute;
+            right: 40%;
+        }
+
+        #info {
+            font-size: x-large;
+            padding-top: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div id="lv">
+        <p id="info"></p>
+        <img id="img" src="" alt="" />
+        <button id="pre">上一张</button>
+        <button id="next">下一张</button>
+        <div id="div1" style="font-size: 25px;font-weight: 600;height: 1em;"></div>
+        <!--        <div>{{ station_name.name }}</div>-->
+    </div>
+    <script LANGUAGE="JavaScript">
+        $(function () {
+            //获取两个按钮
+
+            var pre = document.getElementById("pre")
+            var next = document.getElementById("next")
+            //要切换图片就是要修改img 标签的src属性
+            //获取img 标签，但是返回的是数组，所以你得操作的是数组中的对象
+            var img = document.getElementsByTagName("img")[0]
+            //创建一个数组用来保存图片的路径
+            var path = "../../static/"
+            var index = 1
+            var info = document.getElementById("info")
+            // var date = new Date()  //当前日期
+            // var year = date.getFullYear()
+            // var month = date.getMonth()+1
+            // let month1 = month < 10?'0'+month:month
+            // var day = date.getDate()
+            // let day1 = day < 10?'0'+day:day
+            // var nowdate = year+"-"+month+"-"+day
+            // // console.log(nowdate)
+            // let nowdate1 = year+"-"+month1+"-"+day1
+            // console.log(nowdate1)
+            let date = {{ date_from }
+        } 
+            let year = parseInt(date / 10000)
+            let month = parseInt(date / 100 % 100)
+            let month1 = month < 10 ? '0' + month : month
+            let day = date % 100
+            let day1 = day < 10 ? '0' + day : day
+            let givedate = year + "-" + month1 + "-" + day1 
+            alert(givedate)
+            var index_all = {{ length }}
+
+        //        alert(path+"/"+nowdate+"-1.jpg")
+        //            console.log({{picture_name}})
+
+        img.src = path + '{{station_name.name}}' + "/" + givedate + '/' + givedate + "-" + "1.jpg"
+        //        print(img.src)
+        info.innerHTML = "总共" + index_all + "照片，现在是第" + index + "照片"
+        pre.onclick = function () {
+            if (--index <= 0) {
+                index = index_all
+            }
+            img.src = path + '{{station_name.name}}' + "/" + givedate + '/' + givedate + "-" + index + ".jpg"
+
+            info.innerHTML = "总共" + index_all + "照片，现在是第" + index + "照片"
+
+        };
+        next.onclick = function () {
+            if (++index > index_all) {
+                index = 1
+            }
+            img.src = path + '{{station_name.name}}' + "/" + givedate + '/' + givedate + "-" + index + ".jpg"
+            info.innerHTML = "总共" + index_all + "照片，现在是第" + index + "照片"
+        };
+        let chang = {{ chang }}
+        let wei = {{ wei }}
+        document.getElementById("div1").innerText = "该照片拍于" + chang + "号场" + wei + "号位置，" + "拍摄于" + givedate;
+            // document.write("该照片拍于" + {{ chang }} +"号场"+ {{wei}} +"号位置，"+"拍摄于" + givedate)
+        })
+    </script>
+</body>
+</html>

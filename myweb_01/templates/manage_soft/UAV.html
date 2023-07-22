@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>无人机信息</title>
+    <!-- <style>
+        /* 消除浏览器自带的内外边距 */
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        /* 版心 */
+        .w {
+            width: 90%;
+            margin: auto;
+        }
+
+        html {
+            font-style: sans-serif;
+        }
+
+        .head {
+            width: 100%;
+            height: 80px;
+            background-color: rgb(0, 75, 133);
+        }
+
+        .head img {
+            float: left;
+            width: 500px;
+            line-height: 80px;
+            margin-top: 18px;
+            margin-left: 5%;
+            /* border: 1px solid #fff; */
+        }
+
+        .head .exit a {
+            float: right;
+            line-height: 80px;
+            color: #fff;
+            margin-right: 5%;
+        }
+
+        .w .nav {
+            height: 40px;
+            margin-top: 10px;
+            border: 1px solid #888;
+        }
+
+        .w .nav .station {
+            float: left;
+            width: 32%;
+            text-align: center;
+            line-height: 40px;
+            margin-left: 1px;
+            /* flex: 1; */
+        }
+
+        .w .nav .uav {
+            float: right;
+            width: 32%;
+            text-align: center;
+            line-height: 40px;
+            margin-left: 1px;
+        }
+
+        .w .nav .gcs {
+            float: right;
+            width: 32%;
+            text-align: center;
+            margin-left: 1px;
+            margin-right: 1px;
+            line-height: 40px;
+        }
+
+        .w .body {
+            height: 75vh;
+            border: 1px solid #888;
+            margin-top: 10px;
+        }
+    </style> -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+        }
+
+        .daohang {
+            display: inline-block;
+            width: 130px;
+            height: 100%;
+            border-right: 1px solid #f1fafa;
+            vertical-align: top;
+        }
+
+        .information {
+            display: inline-block;
+            width: calc(100% - 138px);
+            height: 100%;
+            background-image: url("../../static/image/BGpicture.png");
+            background-size: cover;
+            background-position-x: center;
+            vertical-align: top;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        ul li a {
+            /* a无法设置宽高 */
+            /* 1.转换成行内块 */
+            display: inline-block;
+
+            /* 2.转换成块级元素 */
+            width: 120px;
+            height: 50px;
+            margin: 15px 5px;
+            background-color: #e8e8ff;
+            line-height: 50px;
+            text-align: center;
+            text-decoration: none;
+            color: black;
+            font-size: 16px;
+        }
+
+        ul li a:hover {
+            background-color: #edeef0;
+            color: #ff8400;
+        }
+
+        .tubiao {
+            position: relative;
+            z-index: 3;
+            margin-left: 10px;
+            margin-top: 10px;
+        }
+
+        .station {
+            position: absolute;
+            top: 47%;
+            left: calc(50% + 130px);
+            margin: -200px 0 0 -565px;
+            width: 1000px;
+            height: 450px;
+            /* border: 2px solid #878686; */
+            /* border-radius: 10px; */
+            /*            background-color: #fff;*/
+        }
+
+        .top {
+            width: 1000px;
+            height: 280px;
+            /*            background-color: aqua;*/
+            display: flex;
+            flex-flow: row wrap;
+            justify-content: space-evenly;
+            align-content: space-evenly;
+        }
+
+        .info {
+            width: 210px;
+            height: 100px;
+            /*            text-align: center;*/
+            /*            margin:20px;*/
+            border: 1px solid #878686;
+            border-radius: 10px;
+            /*
+                display: flex;
+                flex-direction:column nowrap;
+                flex-flow:column wrap;
+                justify-content: flex-start;
+            */
+
+        }
+
+        .title {
+            height: 25px;
+            width: 50px;
+            margin-top: 8px;
+            margin-left: 10px;
+            margin-bottom: 0px;
+            font-weight: 600;
+        }
+
+        .show {
+            height: 25px;
+            width: 192px;
+            margin-top: 8px;
+            margin-left: 10px;
+        }
+
+
+        .but {
+            width: 150px;
+            min-height: 30px;
+            margin: 30px 425px;
+            background-color: #1c7fe0;
+            border: 1px solid #1c7fe0;
+            color: #fff;
+            padding: 9px 14px;
+            font-size: 15px;
+            line-height: normal;
+            border-radius: 20px;
+        }
+
+        .title1 {
+            text-align: center;
+            height: 25px;
+            width: 200px;
+            margin-top: 8px;
+            margin-left: 10px;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        #uavfly {
+            height: 50px;
+            width: 50px;
+            border-radius: 25px;
+            background-color: black;
+            margin-left: 83px;
+        }
+
+        #ifin {
+            height: 50px;
+            width: 50px;
+            border-radius: 25px;
+            background-color: black;
+            margin-left: 83px;
+        }
+
+        #staOK {
+            height: 50px;
+            width: 50px;
+            border-radius: 25px;
+            background-color: black;
+            margin-left: 83px;
+        }
+
+        #conmuOK {
+            height: 50px;
+            width: 50px;
+            border-radius: 25px;
+            background-color: black;
+            margin-left: 83px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- <div class="head">
+        <div class="logo">
+            <img src="../../static/image/s.png" alt="中广核图标白">
+        </div>
+        <div class="exit">
+            <a href="{% url 'login' %}">退出登录</a>
+        </div>
+    </div>
+    <div class="w">
+        <div class="nav">
+            <div class="station"><a href="">{{ station_id }}</a></button></div>
+            <div class="uav"><a href="">无人机信息</a></div>
+            <div class="gcs"><a href="">机巢信息</a></div>
+        </div>
+        <div class="body">
+            <div class="message">
+                {% for u in stationlist %}
+                <div class="station"><a href="{% url 'station' u.station_id rightnum %}">{{ u.station_name }}</a></div>
+                {% endfor %}
+                <div class="title">无人机信息</div>
+                <div class="info">
+                    <p class="title">电量</p>
+                    <div class="show">{{ last_data.battery }}</div>
+                    <div class="show">{{ last_data.time }}</div>
+                </div>
+                <div class="info">
+                    <p class="title">经度</p>
+                    <div class="show">{{ last_data.longitude }}</div>
+                    <div class="show">{{ last_data.time }}</div>
+                </div>
+                <div class="info">
+                    <p class="title">纬度</p>
+                    <div class="show">{{ last_data.latitude }}</div>
+                    <div class="show">{{ last_data.time }}</div>
+                </div>
+                <div class="info">
+                    <p class="title">海拔</p>
+                    <div class="show">{{ last_data.altitude }}</div>
+                    <div class="show">{{ last_data.time }}</div>
+                </div>
+                <div class="info">
+                    <p class="title1">无人机能否起飞</p>
+                    <div id="uavfly"></div>
+                </div>
+                <div class="info">
+                    <p class="title1">无人机是否在巢</p>
+                    <div id="ifin"></div>
+                </div>
+                <div class="info">
+                    <p class="title1">机巢工作是否正常</p>
+                    <div id="staOK"></div>
+                </div>
+                <div class="info">
+                    <p class="title1">通讯是否正常</p>
+                    <div id="conmuOK"></div>
+                </div>
+            </div>
+            <div class="manage"></div>
+        </div>
+    </div> -->
+
+    <div class="daohang">
+        <ul>
+            <li><a href="{% url 'muchao' station_id rightnum %}">母巢信息</a></li>
+            <li><a href="{% url 'station' station_id rightnum %}">无人机飞行信息</a></li>
+        </ul>
+    </div>
+    <div class="information">
+        <div class="tubiao"> <img src="../../static/image/CGN.png" alt="中广核图标" width="300" /></div>
+        <div class="station">
+            <h2 style="position:relative;margin-top: 5px;text-align: center; margin-bottom: -5px;">无人机信息</h2>
+            <div class="top">
+                <div class="info">
+                    <p class="title">电量</p>
+                    <div class="show">{{ last_data.Bat }}</div>
+                    <div class="show">{{ last_data.time }}</div>
+                </div>
+                <div class="info">
+                    <p class="title">经度</p>
+                    <div class="show">{{ last_data.Lat }}</div>
+                    <div class="show">{{ last_data.time }}</div>
+                </div>
+                <div class="info">
+                    <p class="title">纬度</p>
+                    <div class="show">{{ last_data.Lng }}</div>
+                    <div class="show">{{ last_data.time }}</div>
+                </div>
+                <div class="info">
+                    <p class="title">海拔</p>
+                    <div class="show">{{ last_data.height }}</div>
+                    <div class="show">{{ last_data.time }}</div>
+                </div>
+                <div class="info">
+                    <p class="title1">无人机能否起飞</p>
+                    <div id="uavfly"></div>
+                </div>
+                <div class="info">
+                    <p class="title1">无人机是否在巢</p>
+                    <div id="ifin"></div>
+                </div>
+                <div class="info">
+                    <p class="title1">机巢工作是否正常</p>
+                    <div id="staOK"></div>
+                </div>
+                <div class="info">
+                    <p class="title1">通讯是否正常</p>
+                    <div id="conmuOK"></div>
+                </div>
+            </div>
+        </div>
+
+
+        <script language="JavaScript">
+            setTimeout(function () { location.reload() }, 50000);
+            //定时界面刷新
+            //获取数据让灯变成对应颜色
+            // 无人机状态
+            let uaviffly = document.getElementById("uavfly")
+            let uavflystation = {{ last_data.UAViffly }}
+            if (uavflystation == 0) {
+                uaviffly.style.background = "Crimson"
+            }
+            else if (uavflystation == 1) {
+                uaviffly.style.background = "#68EE68"
+            }
+
+            //是否在巢
+            let uavifin = document.getElementById("ifin")
+            let ifinstation = {{ last_data.ifin }}
+            if (ifinstation == 0) {
+                uavifin.style.background = "Crimson"
+            }
+            else if (ifinstation == 1) {
+                uavifin.style.background = "#68EE68"
+            }
+
+            //母巢工作是否正常
+            let staifOK = document.getElementById("staOK")
+            let staOKstation = {{ last_data.staOK }}
+            if (staOKstation == 0) {
+                staifOK.style.background = "Crimson"
+            }
+            else if (staOKstation == 1) {
+                staifOK.style.background = "#68EE68"
+            }
+
+            //通讯是否正常
+            let conmuifOK = document.getElementById("conmuOK")
+            let conmustation = {{ last_data.conmuOK }}
+            if (conmustation == 0) {
+                conmuifOK.style.background = "Crimson"
+            }
+            else if (conmustation == 1) {
+                conmuifOK.style.background = "#68EE68"
+            }
+        </script>
+</body>
+
+</html>

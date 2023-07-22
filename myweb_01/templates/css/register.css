@@ -1,0 +1,85 @@
+        /* 此文件只写css样式 */
+        /* 消除浏览器自带的内外边距 */
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        /* 版心 */
+        .w {
+            width: 75%;
+            margin: auto;
+            background-image: "../image/background(2).jpg";
+        }
+
+        /* 头部盒子 */
+        .w header {
+            height: 80px;
+            /* background-color: bisque; */
+            margin-bottom: 60px;
+            border-bottom: 2px solid rgb(51, 89, 169);
+            /* margin: 30px auto; */
+        }
+
+        /* 中广核图标部分 */
+        .logo {
+            float: left;
+            width: 400px;
+            height: 80px;
+            background-image: url("../../static/image/CGN.png");
+            /* line-height: 80px; */
+            /* text-align: center; */
+            /* background-color: pink; */
+
+        }
+
+        .w .registerarea {
+            height: 500px;
+            margin: 10px auto;
+            /* border: 1px solid #ccc; */
+
+        }
+
+        .w .registerarea h3 {
+            height: 66px;
+            border: 1px solid #aaa;
+            background-color: #eee;
+            line-height: 66px;
+            font-size: 30px;
+            text-align: center;
+        }
+
+        .w .registerarea .regform {
+            height: 350px;
+            width: 600px;
+            line-height: 70px;
+            /* font-size: 25px; */
+            text-align: center;
+            /* border: 1px solid #ccc; */
+            margin: 50px auto 0;
+        }
+
+        .regform label {
+            font-size: 25px;
+            display: inline-block;
+            width: 120px;
+            text-align: center;
+        }
+
+        .regform input {
+            width: 240px;
+            height: 35px;
+            border: 1px solid #999;
+        }
+
+        .regform .regist {
+            width: 240px;
+            height: 35px;
+            border: 1px solid #999;
+        }
+
+        .regform .sub input {
+            width: 120px;
+            height: 40px;
+            text-align: center;
+        }

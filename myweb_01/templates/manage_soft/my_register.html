@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>注册</title>
+    <!-- <link rel="stylesheet" href="../../static/css/register.css"> -->
+    <style>
+         html {
+            font-style: sans-serif;  
+
+        }
+        /* body中统一规定的参数 */
+        body {
+            /* 背景图片和相关参数 */
+            background-image: url("../../static/image/GCSBG.jpg");
+            background-position: center;
+            background-size: cover;
+            background-attachment: fixed;
+            font-family: "Microsoft YaHei",tahoma,verdana,sans-serif;
+
+
+        }
+
+        /* 此文件只写css样式 */
+        /* 消除浏览器自带的内外边距 */
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        /* 版心 */
+        .w {
+            width: 90%;
+            margin: auto;
+            background-image: "../image/background(2).jpg";
+        }
+
+        /* 头部盒子 */
+        .w header {
+            height: 80px;
+            /* background-color: bisque; */
+            margin-bottom: 60px;
+            border-bottom: 2px solid rgb(53, 152, 219);
+            text-align: center;
+            /* margin: 30px auto; */
+        }
+
+        .w header a {
+            float: right;
+            line-height: 80px;
+            margin-right: 30px;
+            color: #fff;
+            background-color: rgb(0, 75, 133);
+            text-align: center;
+            text-decoration: none;
+            /* font-size: 25px; */
+        }
+
+        /* 中广核图标部分 */
+        .logo {
+            margin-top: 10px;
+            float: left;
+            width: 500px;
+            /* height: 80px; */
+            /* background-image: url("../../static/image/s.png"); */
+            line-height: 80px;
+            /* text-align: center; */
+            /* background-color: pink; */
+
+        }
+
+        .w .registerarea {
+            height: 500px;
+            margin: 10px auto;
+            /* border: 1px solid #ccc; */
+
+        }
+
+        .w .registerarea .title {
+            float: left;
+            /* border: 1px solid #999; */
+            width: 59%;
+            height: auto;
+            text-align: center;
+            font-size: 4.5vh;
+            color: #fff;
+            margin-top: 11%;
+            /* align-items: center; */
+        }
+
+        .w .registerarea .regform h3 {
+            height: 66px;
+            border-bottom: 1px solid rgb(53, 152, 219);
+            /* border: 1px solid #aaa; */
+            /* background-color: #eee; */
+            line-height: 66px;
+            font-size: 30px;
+            /* color: rgb(63, 167, 236); */
+            color: #fff;
+            text-align: center;
+            margin-left: 10px;
+            margin-right: 10px;
+            margin-bottom: 3vh;
+        }
+
+        .w .registerarea .regform {
+              /* position: absolute; */
+            /* 向右对齐 */
+            float: right;
+            /* 相对高度，根据页面大小变化 */
+            height: 62vh;
+            /* 相对宽度 */
+            width: 27vw;
+            line-height: 9vh;
+            /* font-size: 25px; */
+            text-align: center;
+            /* border: 1px solid #ccc; */
+            margin-right: 3%;
+            /* rgb透明度 */
+            background-color: rgba(0, 0, 0, 0.2);
+            border-radius: 15px;
+            /* margin: 10px auto 0; */
+            /* white-space: pre; */
+        }
+/* 
+        .regform label {
+            font-size: 25px;
+            display: inline-block;
+            width: 120px;
+            text-align: center;
+        } */
+
+        .regform input {
+            width: 18vw;
+            height: 5vh;
+            border: 1px solid #999;
+            border-radius: 6px;
+        }
+
+        .regform .regist {
+            /* width: 240px;
+            height: 35px; */
+            width: 18vw;
+            height: 7vh;
+            border: 1px solid #999;
+            border-radius: 6px;
+            margin-top: 8vh;
+            background-color: rgb(18, 134, 211);
+            color: #fff;
+            font-size: 3vh;
+
+
+        }
+
+        /* .regform .sub input {
+            width: 20vw;
+            height: 5vh;
+            text-align: center;
+            border-radius: 3px;
+
+        } */
+    </style>
+</head>
+
+<body>
+    <div class="w">
+        <header>
+            <div class="logo">
+                <img src="../../static/image/s.png" alt="中广核图标" width="500px">
+            </div>
+            <a href="{% url 'login' %}" target="_self">返回登录</a>
+        </header>
+        <div class="registerarea">
+            <div class="title">
+                <h1>无人机管理系统</h1>
+            </div>
+            <!-- <h3>新用户注册</h3> -->
+            <div class="regform">
+                <h3>用户注册</h3>
+                <form action="{% url 'regist_sql' %}" method="post">
+                    {% csrf_token %}
+                    <!-- <label for="">用户名：</label> -->
+                    <input type="text" required="required" placeholder="  请输入用户名" name="username">
+                    <br>
+                    <!-- <label for="">密码：</label> -->
+                    <input type="text" required="required" placeholder="  请输入密码" name="password">
+                    <br>
+                    <!-- <label for="">权限码：</label> -->
+                    <input type="text" placeholder="  请输入权限码" name="permission">
+                    <br>
+                    <a target="_self"><button class="regist" type="submit">注&nbsp;&nbsp;&nbsp;&nbsp;册</button></a>
+                </form>
+                <!-- <a href="{% url 'login' %}" target="_self"><input type="submit" value="返回"></a> -->
+            </div>
+        </div>
+        <footer></footer>
+    </div>
+</body>
+
+</html>
